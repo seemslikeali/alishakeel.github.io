@@ -1,0 +1,146 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="APX.APX_WEB.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />--%>
+
+    <%-- custom --%>
+    <link rel="stylesheet" href="../Styles/NewSiteMainImp.css?t=<%= "" +DateTime.Now.Ticks %>" />
+    <link rel="stylesheet" href="../Styles/main.css?t=<%= "" +DateTime.Now.Ticks %>" />
+    <title>Apexus Deft</title>
+
+    <style>
+        div.mw {
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .c2 {
+            text-align: center;
+            background-color: cornflowerblue;
+        }
+
+        .c3 {
+            text-align: center;
+            background-color: lightcyan;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+         <asp:ScriptManager ID="SM1" runat="server" />
+        <div class="grid_o">
+        <header>
+            <div class="container">
+                <nav>
+                    <input type="checkbox" id="nav" class="hidden">
+                    <label for="nav" class="nav-btn">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </label>
+                    <div class="logo marginTop">
+                        <a href="../Anyone/LogInPageWMP.aspx">Apexus Deft</a> <br /> <asp:Label ID="UserNameLB" runat="server" />
+                    </div>
+                    <div class="nav-wrapper">
+                        <ul class="topmenuUL">
+                            <%--<li class="topmenu"><a href="#">home</a></li>--%>
+                            <li class="topmenu"><a href="https://discord.gg/apx">Discord</a></li>
+                            <li class="dropdown topmenu" runat="server" id="AnyoneMenuDD">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="../Anyone/JoinUs.aspx">Recruitment</a></li>
+                                    <li><a href="https://discord.gg/apx">Discord Link</a></li>
+                                </ul>
+                            </li>
+                            <asp:PlaceHolder ID="MemberMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="ModMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="AdminMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="LeaderMenuPH" runat="server"></asp:PlaceHolder>
+                            <%--<li class="topmenu"><asp:Label class="topmenu" ID="UserNameLB" runat="server" /></li>--%>
+                            <li class="topmenu"><asp:Button ID="LogInBTN" runat="server" class="btn" CssClass="" Text="Log In" OnClick="LogInBTN_Click" /></li>
+                            <!-- <li><a href="#">login</a></li> -->
+                        </ul>
+                       
+                    </div><%-- <br />
+                    <div class="logo marginTop">
+                        <asp:Label ID="UserNameLB" runat="server" />
+                    </div>--%>
+                </nav>
+            </div>
+        </header>
+            <h1><asp:Label ID="ErrorLBL"  ForeColor="Red" runat="server" /></></h1>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+
+
+    <%--<form id="form1" runat="server">
+         <asp:ScriptManager ID="SM1" runat="server" />
+        <div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Apexus Deft</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+
+                            <<li class="dropdown" runat="server" id="AnyoneMenuDD">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="../Anyone/JoinUs.aspx">Recruitment</a></li>
+                                </ul>
+                            </li>
+                            <asp:PlaceHolder ID="MemberMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="ModMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="AdminMenuPH" runat="server"></asp:PlaceHolder>
+                            <asp:PlaceHolder ID="LeaderMenuPH" runat="server"></asp:PlaceHolder>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <asp:Label class="navbar-text" ID="UserNameLB" runat="server" />
+                            </li>
+                            <li>
+                                <asp:Button ID="LogInBTN" runat="server" class="btn btn-default navbar-btn" Text="Log In" OnClick="LogInBTN_Click" /></li>
+                        </ul>
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+            
+            <b><h1><center><asp:Label ID="ErrorLBL" ForeColor="Red" runat="server" /></center></h1></b>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>--%>
+</body>
+</html>
