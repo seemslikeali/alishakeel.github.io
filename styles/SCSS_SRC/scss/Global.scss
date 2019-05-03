@@ -1,0 +1,16 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: $bg-color;
+    color: $text-color;
+
+    form {
+        input {
+            color: black;
+        }
+    }
+
+    h4 {
+        font-size: 2em;
+        line-height:1.75em;
+    }
+}
